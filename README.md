@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)
 ![PHPStan](https://img.shields.io/badge/PHPStan-level%207-brightgreen.svg?style=flat-square)
 
-Sistema web para la gestión de inventario, ventas, usuarios y cierre de caja en carnicerías, desarrollado con [CakePHP](https://cakephp.org) 4.x.
+MVP enfocado en sistema web para la gestión de inventario, ventas, usuarios y cierre de caja en carnicerías, desarrollado con [CakePHP](https://cakephp.org) 4.x.
 
 ---
 
