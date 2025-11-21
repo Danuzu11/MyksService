@@ -70,17 +70,23 @@ class UsersController extends AppController
 
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
-            if ($user) {
 
-                $this->Auth->setUser($user);
+            if ($user) {
+                $data = $this->Auth->setUser($user);
+                $rol = $user['id_rol'];
+
                 if ($user['username'] == 'gerente' && $rol == 1) {
                     return $this->redirect(['controller' => 'users', 'action' => 'panel']);
                 } elseif ($user['username'] == 'cajero' && $rol == 2) {
                     return $this->redirect(['controller' => 'users', 'action' => 'panel']);
-                } elseif ($user['username'] == 'carnicero' && $rol == 3) {
+                // } elseif ($user['username'] == 'carnicero' && $rol == 3) {
+                //     return $this->redirect(['controller' => 'users', 'action' => 'panel']);
+                } elseif ($user['username'] == 'admin' && $rol == 1) {
                     return $this->redirect(['controller' => 'users', 'action' => 'panel']);
                 }
+
             }
+            
             $this->set('mensaje', 'error1');
         }
 
@@ -92,6 +98,7 @@ class UsersController extends AppController
         $user = $this->Auth->user();
         $this->set(compact('user'));
     }
+
     public function logout()
     {
         return $this->redirect($this->Auth->logout());
@@ -260,6 +267,7 @@ class UsersController extends AppController
 
         $this->set(compact('user'));
     }
+
     public function alert()
     {
         $this->viewBuilder()->Setlayout('alert');
@@ -290,170 +298,170 @@ class UsersController extends AppController
         $this->viewBuilder()->Setlayout('actualizacion');
     }
 
-    public function verHistorialCitasSistema()
-    {
-        $this->viewBuilder()->Setlayout('medicos');
-        $this->loadModel("Afiliados");
-        $this->loadModel("Medicos");
-        $this->loadModel("Citas");
+    // public function verHistorialCitasSistema()
+    // {
+    //     $this->viewBuilder()->Setlayout('medicos');
+    //     $this->loadModel("Afiliados");
+    //     $this->loadModel("Medicos");
+    //     $this->loadModel("Citas");
 
-        $user = $this->Auth->user();
-        // $currentUser = $this->Users
-        // ->find()
-        // ->where(['id' => $user['id']])->first()->toArray();
-
-
-        $filterCorreo = $this->request->getQuery('search');
-        $citas = 'null';
-        $afiliados = 'null';
-        $medicos = 'null';
-        if (!empty($filterCorreo)) {
-
-            $currentUser = $this->Users->find('all', [
-                'conditions' => ['email' => $filterCorreo],
-            ])->toArray();
+    //     $user = $this->Auth->user();
+    //     // $currentUser = $this->Users
+    //     // ->find()
+    //     // ->where(['id' => $user['id']])->first()->toArray();
 
 
-            if (empty($currentUser)) {
-                $respuesta = "Error";
-                $data = [
-                    'respuesta' => $respuesta,
-                    'link' => '../users/verHistorialCitasSistema',
-                    'mensaje' => 'El correo o nombre que ingreso no existe'
-                ];
+    //     $filterCorreo = $this->request->getQuery('search');
+    //     $citas = 'null';
+    //     $afiliados = 'null';
+    //     $medicos = 'null';
+    //     if (!empty($filterCorreo)) {
 
-                $url = [
-                    'controller' => 'users',
-                    'action' => 'alert',
-                    '?' => $data
-                ];
+    //         $currentUser = $this->Users->find('all', [
+    //             'conditions' => ['email' => $filterCorreo],
+    //         ])->toArray();
 
-                return $this->redirect($url);
-            }
 
-            $citas = $this->Citas
-                ->find()
-                ->where(['user_id' => $currentUser[0]['id'], 'fecha >' => date('m/d/y, h:i a')]);
+    //         if (empty($currentUser)) {
+    //             $respuesta = "Error";
+    //             $data = [
+    //                 'respuesta' => $respuesta,
+    //                 'link' => '../users/verHistorialCitasSistema',
+    //                 'mensaje' => 'El correo o nombre que ingreso no existe'
+    //             ];
 
-            $medicos = $this->Medicos
-                ->find()
-                ->where(['status' => 'activo'])
-                ->contain('Especialidades')->toArray();
+    //             $url = [
+    //                 'controller' => 'users',
+    //                 'action' => 'alert',
+    //                 '?' => $data
+    //             ];
 
-            if (!empty($citas->toArray())) {
-                $afiliados = $this->Afiliados->find('all', [
-                    'conditions' => ['idUser' => $currentUser[0]['id']],
-                ])->toArray();
-            }
-            $currentUser = $currentUser[0];
-            $this->set(compact('currentUser'));
-        }
-        $this->set(compact('medicos'));
-        $this->set(compact('citas'));
-        $this->set(compact('afiliados'));
-    }
+    //             return $this->redirect($url);
+    //         }
 
-    public function afiliados()
-    {
-        $this->loadModel("Afiliados");
-        $this->viewBuilder()->Setlayout('medicos');
-        $afiliado = $this->Afiliados->newEmptyEntity();
-        $this->set(compact('afiliado'));
+    //         $citas = $this->Citas
+    //             ->find()
+    //             ->where(['user_id' => $currentUser[0]['id'], 'fecha >' => date('m/d/y, h:i a')]);
 
-        if ($this->request->is('post')) {
+    //         $medicos = $this->Medicos
+    //             ->find()
+    //             ->where(['status' => 'activo'])
+    //             ->contain('Especialidades')->toArray();
 
-            if ($this->request->getData()['cedula']) {
-                $existingUser = $this->Afiliados->find('all', [
-                    'conditions' => ['cedula' => $this->request->getData()['tipo'] . '-' . $this->request->getData()['cedula']],
-                ])->first();
+    //         if (!empty($citas->toArray())) {
+    //             $afiliados = $this->Afiliados->find('all', [
+    //                 'conditions' => ['idUser' => $currentUser[0]['id']],
+    //             ])->toArray();
+    //         }
+    //         $currentUser = $currentUser[0];
+    //         $this->set(compact('currentUser'));
+    //     }
+    //     $this->set(compact('medicos'));
+    //     $this->set(compact('citas'));
+    //     $this->set(compact('afiliados'));
+    // }
 
-                if ($existingUser) {
-                    $respuesta = "Error";
-                    $data = [
-                        'respuesta' => $respuesta,
-                        'link' => '../users/afiliados',
-                        'mensaje' => 'El afiliado ya se encuentra registrado. Porfavor, ingresa otra cedula de afiliado.'
-                    ];
+    // public function afiliados()
+    // {
+    //     $this->loadModel("Afiliados");
+    //     $this->viewBuilder()->Setlayout('medicos');
+    //     $afiliado = $this->Afiliados->newEmptyEntity();
+    //     $this->set(compact('afiliado'));
 
-                    $url = [
-                        'controller' => 'users',
-                        'action' => 'alert',
-                        '?' => $data
-                    ];
+    //     if ($this->request->is('post')) {
 
-                    return $this->redirect($url);
-                }
-            }
+    //         if ($this->request->getData()['cedula']) {
+    //             $existingUser = $this->Afiliados->find('all', [
+    //                 'conditions' => ['cedula' => $this->request->getData()['tipo'] . '-' . $this->request->getData()['cedula']],
+    //             ])->first();
 
-            $afiliados = $this->Afiliados->patchEntity($afiliado, $this->request->getData());
-            $afiliados->cedula = $this->request->getData()['tipo'] . '-' . $afiliados->cedula;
+    //             if ($existingUser) {
+    //                 $respuesta = "Error";
+    //                 $data = [
+    //                     'respuesta' => $respuesta,
+    //                     'link' => '../users/afiliados',
+    //                     'mensaje' => 'El afiliado ya se encuentra registrado. Porfavor, ingresa otra cedula de afiliado.'
+    //                 ];
 
-            if ($this->Afiliados->save($afiliados)) {
-                $respuesta = "Correcto";
-                $data = [
-                    'respuesta' => $respuesta,
-                    'link' => '../dashboard',
-                    'mensaje' => 'El usuario ha sido agregado exitosamente'
-                ];
+    //                 $url = [
+    //                     'controller' => 'users',
+    //                     'action' => 'alert',
+    //                     '?' => $data
+    //                 ];
 
-                $url = [
-                    'controller' => 'users',
-                    'action' => 'alert',
-                    '?' => $data
-                ];
+    //                 return $this->redirect($url);
+    //             }
+    //         }
 
-                return $this->redirect($url);
-            } else {
-                $respuesta = "Error";
-                $data = [
-                    'respuesta' => $respuesta,
-                    'link' => '../users/afiliados',
-                    'mensaje' => 'El afiliado no se pudo agregar. Porfavor, trata denuevo.'
-                ];
+    //         $afiliados = $this->Afiliados->patchEntity($afiliado, $this->request->getData());
+    //         $afiliados->cedula = $this->request->getData()['tipo'] . '-' . $afiliados->cedula;
 
-                $url = [
-                    'controller' => 'users',
-                    'action' => 'alert',
-                    '?' => $data
-                ];
+    //         if ($this->Afiliados->save($afiliados)) {
+    //             $respuesta = "Correcto";
+    //             $data = [
+    //                 'respuesta' => $respuesta,
+    //                 'link' => '../dashboard',
+    //                 'mensaje' => 'El usuario ha sido agregado exitosamente'
+    //             ];
 
-                return $this->redirect($url);
-            }
-        }
-        $user = $this->Auth->user();
-        $afiliado->idUser = $user['id'];
-        $this->set(compact('afiliado'));
-    }
+    //             $url = [
+    //                 'controller' => 'users',
+    //                 'action' => 'alert',
+    //                 '?' => $data
+    //             ];
 
-    public function searchAfiliados($the_user, $the_user_rol)
-    {
-        $this->loadModel("Afiliados");
-        $this->viewBuilder()->setLayout('medicos');
+    //             return $this->redirect($url);
+    //         } else {
+    //             $respuesta = "Error";
+    //             $data = [
+    //                 'respuesta' => $respuesta,
+    //                 'link' => '../users/afiliados',
+    //                 'mensaje' => 'El afiliado no se pudo agregar. Porfavor, trata denuevo.'
+    //             ];
 
-        $user = $this->Auth->user();
-        $idUser = $the_user;
+    //             $url = [
+    //                 'controller' => 'users',
+    //                 'action' => 'alert',
+    //                 '?' => $data
+    //             ];
 
-        $afiliados = $this->Afiliados->find()
-            ->where(['idUser' => $idUser])
-            ->toArray();
+    //             return $this->redirect($url);
+    //         }
+    //     }
+    //     $user = $this->Auth->user();
+    //     $afiliado->idUser = $user['id'];
+    //     $this->set(compact('afiliado'));
+    // }
 
-        $afiliadosArray = [];
-        foreach ($afiliados as $afiliado) {
-            $afiliadosArray[] = [
-                'id' => $afiliado->id,
-                'nombre' => $afiliado->nombre,
-                'apellido' => $afiliado->apellido,
-                'fecha_nacimiento' => $afiliado->fecha_nacimiento,
-                'cedula' => $afiliado->cedula,
-                'email' => $afiliado->email
+    // public function searchAfiliados($the_user, $the_user_rol)
+    // {
+    //     $this->loadModel("Afiliados");
+    //     $this->viewBuilder()->setLayout('medicos');
 
-                // Agrega aquí los campos que quieras incluir en el array
-            ];
+    //     $user = $this->Auth->user();
+    //     $idUser = $the_user;
 
-        }
+    //     $afiliados = $this->Afiliados->find()
+    //         ->where(['idUser' => $idUser])
+    //         ->toArray();
 
-        $this->set(compact('afiliadosArray', 'the_user_rol'));
-    }
+    //     $afiliadosArray = [];
+    //     foreach ($afiliados as $afiliado) {
+    //         $afiliadosArray[] = [
+    //             'id' => $afiliado->id,
+    //             'nombre' => $afiliado->nombre,
+    //             'apellido' => $afiliado->apellido,
+    //             'fecha_nacimiento' => $afiliado->fecha_nacimiento,
+    //             'cedula' => $afiliado->cedula,
+    //             'email' => $afiliado->email
+
+    //             // Agrega aquí los campos que quieras incluir en el array
+    //         ];
+
+    //     }
+
+    //     $this->set(compact('afiliadosArray', 'the_user_rol'));
+    // }
 
 
     public function delete($id = null)

@@ -5,37 +5,33 @@
  */
 ?>
 <div class="container-form sign-in">
-    <div class="opacity-90 w-96 bg-slate-800 rounded-lg px-6 py-36 ring-1 ring-slate-900/5 shadow-xl  items-center text-center"
-        id="fix-width">
+    <div class="opacity-90 w-96 bg-slate-800 rounded-lg px-6 py-36 ring-1 ring-slate-900/5 shadow-xl/30 items-center text-center border-2 border-x-indigo-200 "
+        id="fix-width"
+    >
 
-        <h1 class=" mb-5 font-semibold text-3xl text-blue-900  md:text-center">
-            Ingresa 
+        <div class="w-1/2">
+            <img class="rounded-md h-auto rounded-full" src="<?= $this->Url->build('/', ['fullBase' => true]) . 'img/image/logoMks.png' ?>" alt="ImagenPerfil">
+        </div>
+
+        <h1 class="p-2 mb-5 font-bold text-3xl text-rose-600  md:text-center">
+            Iniciar Sesion 
         </h1>
 
-        <?= $this->Form->create(null, ['name' => 'formulario', 'class' => 'formulario', 'id' => 'formulario', 'url' => ['controller' => 'users', 'action' => 'login/'.$rol]]) ?>
+        <?= $this->Form->create(null, ['name' => 'formulario', 'class' => 'p-3 formulario', 'id' => 'formulario', 'url' => ['controller' => 'users', 'action' => 'login/'.$rol]]) ?>
 
         <div class="formulario__grupo-input">
-            <?= $this->Form->control('Usuario', ['id' => "username", 'class' => 'formulario__grupo-input w-full py-2 bg-gray-100 text-gray-500 px-1 outline-none mb-4', 'name' => 'username', 'value' => '']) ?>
-        </div>
+            <?= $this->Form->control('Usuario', ['id' => "username", 'class' => 'rounded-lg p-3 formulario__grupo-input w-full py-2 bg-gray-100 text-gray-500 px-1 outline-none mb-4', 'name' => 'username', 'value' => '']) ?>
+        </div>  
 
         <div class="formulario__grupo-input">
-            <?= $this->Form->control('Contraseña', ['id' => "password", 'class' => 'formulario__grupo-input w-full py-2 bg-gray-100 text-gray-500 px-1 outline-none mb-4', 'type' => 'password', 'name' => 'password', 'value' => '']) ?>
+            <?= $this->Form->control('Contraseña', ['id' => "password", 'class' => 'rounded-lg p-3 formulario__grupo-input w-full py-2 bg-gray-100 text-gray-500 px-1 outline-none mb-4', 'type' => 'password', 'name' => 'password', 'value' => '']) ?>
         </div>
 
-        <?= $this->Form->button('Iniciar Sesion', ['class' => 'font-bold bg-blue-500 w-full text-gray-100 py-2 rounded hover:bg-blue-600 transition-colors', 'type' => 'submit', 'onclick' => 'validar();']) ?>
+        <?= $this->Form->button('Iniciar Sesion', ['class' => 'font-bold bg-blue-500 w-full text-gray-100 py-2 rounded-lg hover:bg-blue-600 transition-colors mt-4', 'type' => 'submit', 'onclick' => 'validar();']) ?>
 
         <?= $this->Form->end() ?>
 
     </div>
-
-    <!-- <div class="welcome">
-        <div class="message">
-            <h2>Bienvenido a MedicSys</h2>
-            <p> Encontrarás todo lo que necesitas para programar citas medicas con los mejores especialistas de la
-                salud e información útil sobre diferentes especialistas </p>
-            <p> Ingresa y disfruta de nuestros servicios </p>
-        </div>
-    </div> -->
 </div>
 
 

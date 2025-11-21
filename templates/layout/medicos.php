@@ -37,7 +37,7 @@ $user = $user['User'];
 
 <body class="h-full flex">
 
-    <div class="menu-lateral bg-slate-950">
+    <div class="menu-lateral bg-slate-950 h-full">
         <ul>
             <nav>
                 <li class="image-and-text mx-5">
@@ -49,20 +49,20 @@ $user = $user['User'];
                 <p class="image-and-text mx-5">Menu</p>
 
                 <li>
-                    <a href="<?= $this->Url->build('/', ['fullBase' => true]) . 'users/logout' ?>" id="btn-logout">
-                        <img class="img-aling"
-                            src="<?= $this->Url->build('/', ['fullBase' => true]) . 'img/icons-logout_3.png' ?>"
-                            alt="Imagen">
-                        Salir
-                    </a>
-                </li>
-
-                <li>
-                    <a href="<?= $this->Url->build('/', ['fullBase' => true]) . 'users/panel' ?>" id="btn-logout">
+                    <a href="<?= $this->Url->build('/', ['fullBase' => true]) . 'users/panel' ?>" >
                         <img class="img-aling"
                             src="<?= $this->Url->build('/', ['fullBase' => true]) . 'img/icons-logout_3.png' ?>"
                             alt="Imagen">
                             Volver al panel
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?= $this->Url->build('/', ['fullBase' => true]) . 'users/logout' ?>" id="btn-logout">
+                        <img class="img-aling"
+                            src="<?= $this->Url->build('/', ['fullBase' => true]) . 'img/icons-logout_3.png' ?>"
+                            alt="Imagen">
+                        Deslogearse
                     </a>
                 </li>
 
@@ -134,9 +134,11 @@ $user = $user['User'];
         color: white;
         position: relative;
         padding-top: 20px;
+        padding-bottom: 20px;
         width: 100%;
         height: 100%;
-        max-width: 300px;
+        max-width: 350px;
+        margin-right: 10px;
         left: 0;
         top: 0;
     }
@@ -156,8 +158,8 @@ $user = $user['User'];
     }
 
     .menu-lateral nav a:hover {
-        border-left: 5px solid #c7c7c7;
-        background: #1f1f1f;
+        border-left: 5px solid #F58787;
+        background: #B82121;
     }
 
     .image-and-text {

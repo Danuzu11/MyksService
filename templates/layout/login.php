@@ -41,10 +41,10 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <?= $this->Html->css('style_login2.css') ?>
 
-    <body style="background-image: url(<?= $this->Url->build('/', ['fullBase' => true]) . 'img/image/leafWelcome1.jpg' ?>);">
+    <body class="bg-cover" style="background-image: url(<?= $this->Url->build('/', ['fullBase' => true]) . 'img/image/carne.jpg' ?>); Background-color: #000">
 
     <?= $this->Flash->render() ?>
-    <?= $this->fetch('content') ?>
+    <?= $this->fetch('content') ?> 
 
     <script>
         var mensaje = "<?= $mensaje ?>"

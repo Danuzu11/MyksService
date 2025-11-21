@@ -12,22 +12,11 @@
     <div class="bienvenida-conteo flex">
 
         <div class="bienvenida-Admin bg-slate-950 rounded-3xl mx-4 my-8 shadow-md ">
-            <h1 style="font-weight: 600;"> INVENTARIO </h1>
+            <h1 style="font-weight: 600;"> Bienvenido al menu de busquedas de inventario </h1>
             <p class="mt-5">
-                !Bienvenido! en este apartado podras visualizar y editar los productos registrados en la plataforma
+                !Bienvenido! en este apartado podras buscar los productos registrados en la plataforma
             </p>
         </div>
-
-        <!-- <div class="conteo-Admin rounded-3xl bg-slate-950 items-center justify-center mb-7 mx-8 my-8 shadow-md">
-            <h1 style="font-weight: 600;"> Total Medicos Registrados </h1>
-            <p class="mt-1"> Resumen de todos los doctores registrados </p>
-            <div class="logoPersonas mt-2">
-                <img class="rounded-md h-auto rounded-full" src="img/iconoCardioRojo.png" alt="Imagen">
-                <h1 class="mx-5" style="font-weight: normal; font-size: 36px">
-                    <?= 0 ?> Ks
-                </h1>
-            </div>
-        </div> -->
 
     </div>
 

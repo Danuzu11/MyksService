@@ -37,9 +37,17 @@
 
 <body class="h-full flex">
 
-    <div class="menu-lateral bg-slate-950">
+    <div class="menu-lateral bg-slate-950 h-full">
         <ul>
             <nav>
+
+                <li class="image-and-text mx-5">
+                    <img class="rounded-md" id="logo"
+                        src="<?= $this->Url->build('/', ['fullBase' => true]) . 'img/image/logoMks.png' ?>" alt="Imagen" style="display:none">
+                    <h1 class="mx-3">MKSProductions</h1>
+                </li>
+                <br>
+
                 <p class="image-and-text mx-5">Menu</p>
 
                 <li>
@@ -119,13 +127,15 @@
         width: 100%;
     }
 
-    .menu-lateral {
+     .menu-lateral {
         color: white;
         position: relative;
         padding-top: 20px;
+        padding-bottom: 20px;
         width: 100%;
         height: 100%;
-        max-width: 250px;
+        max-width: 350px;
+        margin-right: 10px;
         left: 0;
         top: 0;
     }
@@ -145,8 +155,8 @@
     }
 
     .menu-lateral nav a:hover {
-        border-left: 5px solid #c7c7c7;
-        background: #1f1f1f;
+        border-left: 5px solid #F58787;
+        background: #B82121;
     }
 
     .image-and-text {

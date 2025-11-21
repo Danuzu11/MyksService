@@ -16,13 +16,24 @@
         display: flex;
         border-radius: 25px;
         background-color: blue;
+        align-items: center;
         height: 40px;
-        width: 170px;
+        width: 100%;
+        max-width: 200px;
         align-items: center;
         align-content: center;
         font-size: 14px;
         color: white;
         transition: #EB6060 0.3s;
+    }
+
+    .buttonAdd {
+        padding: 5%;
+        align-items: center;
+        align-content: center;
+        /* font-size: 14px;
+        color: white;
+        transition: #EB6060 0.3s; */
     }
 
     .cerrarCaja {
@@ -62,32 +73,46 @@
 
     /* estilos de los cuadros */
     .mainCard {
-        padding: 20px;
-        height: 10%;
-        width: 80%;
-        border-radius: 5px;
+        padding: 50px;
+        /* height: 10%; */
+        /* width: 80%; */
+        /* border-radius: 25px; */
+        /* display: flex; */
+        /* flex-direction: column;
+        justify-content: center; */
     }
 
     .tabla {
         max-width: 2000px;
-        padding: 20px;
+        padding: 3%;
         white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
     }
 
     .header {
         margin-bottom: 20px;
     }
 
+    .bienvenida-conteo {
+        display: flex;
+        justify-content: center;
+    }
+
     .bienvenida-conteo div.bienvenida-Admin {
         width: 800px;
         height: 180px;
         padding: 30px;
+        display: flex;
+        justify-content: center;
     }
 
     .bienvenida-conteo div.conteo-Admin {
         width: 800px;
         height: 180px;
         padding: 30px;
+        display: flex;
+        justify-content: center;
     }
 
     .table-fixed {

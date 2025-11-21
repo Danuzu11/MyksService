@@ -9,7 +9,7 @@
 
 <div class="mainCard column">
 
-    <div class="bienvenida-conteo flex">
+    <div class="bienvenida-conteo flex justify-center">
 
         <div class="bienvenida-Admin bg-slate-950 rounded-3xl mx-4 my-8 shadow-md ">
             <h1 style="font-weight: 600;"> Bienvenido al menu de busquedas de empleado </h1>
@@ -17,32 +17,21 @@
                 !Bienvenido! en este apartado podras visualizar y editar los empleados registrados en la plataforma
             </p>
         </div>
-
-        <!-- <div class="conteo-Admin rounded-3xl bg-slate-950 items-center justify-center mb-7 mx-8 my-8 shadow-md">
-            <h1 style="font-weight: 600;"> Total Medicos Registrados </h1>
-            <p class="mt-1"> Resumen de todos los doctores registrados </p>
-            <div class="logoPersonas mt-2">
-                <img class="rounded-md h-auto rounded-full" src="img/iconoCardioRojo.png" alt="Imagen">
-                <h1 class="mx-5" style="font-weight: normal; font-size: 36px">
-                    <?= 0 ?> Ks
-                </h1>
-            </div>
-        </div> -->
-
+        
     </div>
 
     <div class="tabla bg-slate-950 rounded-3xl">
         <table class="table-fixed">
+
             <div class="clase-contenedor mb-5">
-                <?= $this->Html->link('Agregar Empleado nuevo', ['controller' => 'empleados', 'action' => 'add'], ['class' => 'buttonAdd ml-4']); ?>
+                <?= $this->Html->link('Agregar Empleado nuevo', ['controller' => 'empleados', 'action' => 'add'], ['class' => 'p-2 buttonAdd ml-4']); ?>
             </div>
+            
             <div class="col-span-1" style="display: flex; flex-direction: row; justify-content: space-between;">
 
                 <div class="header">
                     <h1 class="mx-5" style="font-weight: 600;">Empleados</h1>
                 </div>
-
-
 
             </div>
 
@@ -84,26 +73,25 @@
             <?php } ?>
         </table>
     </div>
+
     <?php if($empleados != 'null'){ ?>
-    <div class="paginators">
+        <div class="paginators">
 
-        <ul class="paginationDoctor">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
+            <ul class="paginationDoctor">
+                <?= $this->Paginator->first('<< ' . __('first')) ?>
+                <?= $this->Paginator->prev('< ' . __('previous')) ?>
+                <?= $this->Paginator->numbers() ?>
+                <?= $this->Paginator->next(__('next') . ' >') ?>
+                <?= $this->Paginator->last(__('last') . ' >>') ?>
+            </ul>
 
-    </div>
+        </div>
 
-    <p class="text-paginator">
-        <p><?= $this->Paginator->counter(__('Pagina {{page}} de {{pages}}, mostrando {{current}} registro(s) actuales de {{count}} en total')) ?></p>
-    </p>
+        <p class="text-paginator">
+            <p><?= $this->Paginator->counter(__('Pagina {{page}} de {{pages}}, mostrando {{current}} registro(s) actuales de {{count}} en total')) ?></p>
+        </p>
     <?php } ?>
 </div>
-
-<!-- <?php echo $this->Html->scriptBlock(sprintf('let medicos = %s;', json_encode($medicos))); ?> -->
 
 <script>
     const botones = document.querySelectorAll("#btn-delete-doctor");

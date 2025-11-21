@@ -8,7 +8,7 @@
 <?= $this->Html->css('indexInterfaces.css') ?>
 <div class="mainCard column">
 
-    <div class="bienvenida-conteo flex">
+    <div class="bienvenida-conteo flex justify-center">
 
         <div class="bienvenida-Admin bg-slate-950 rounded-3xl mx-4 my-8 shadow-md ">
             <h1 style="font-weight: 600;"> Bienvenido al menu gestion de categoria de productos </h1>
@@ -23,7 +23,7 @@
         <table class="table-fixed">
             
             <div class="clase-contenedor mb-5">
-                <?= $this->Html->link('Agregar Categoria nueva', ['controller' => 'categorias', 'action' => 'add'], ['class' => 'buttonAdd ml-2']); ?>
+                <?= $this->Html->link('Agregar Categoria nueva', ['controller' => 'categorias', 'action' => 'add'], ['class' => 'p-4 buttonAdd ml-2']); ?>
             </div>
 
             <div class="col-span-1" style="display: flex; flex-direction: row; justify-content: space-between;">
