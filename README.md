@@ -12,7 +12,12 @@ MVP enfocado en plataforma web para la gestión de inventario, ventas, usuarios 
 * **Control de Inventario:** Gestión dinámica de productos, categorías y actualización de stock tras ventas o pedidos.
 * **RBAC (Role-Based Access Control):** Sistema de permisos granular para Administradores, Empleados y Distribuidores.
 * **Gestión de Pedidos:** Flujo completo desde la solicitud del cliente hasta la entrega y facturación.
-  
+
+**Link de Figma**
+* Aqui podra visualizar algunas vistas del proyecto.
+
+https://www.figma.com/design/Dti4Ee9PyhIW5jafcanHET/Modelado-Interfaz-MKS?t=ieogG9x0SPu5T4gz-1
+
 ---
 
 ## 🚀 Funcionalidades principales
