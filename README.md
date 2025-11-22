@@ -7,6 +7,8 @@
 
 MVP enfocado en plataforma web para la gestión de inventario, ventas, usuarios y cierre de caja en carnicerías, desarrollado con [CakePHP](https://cakephp.org) 4.x.
 
+MksService es una solución integral diseñada para digitalizar y optimizar el flujo operativo de carnicerías modernas. Más que un simple inventario, es una plataforma de gestión financiera y logística que permite controlar el ciclo de vida del producto en tiempo real. Desde la recepción de mercancía hasta el Cierre de Caja diario, el sistema garantiza la integridad de los datos, gestiona permisos granulares (RBAC) y agiliza la toma de decisiones con reportes precisos, eliminando las pérdidas por desorganización.
+
 **Puntos técnicos destacados:**
 * **Lógica Financiera:** Módulo dedicado al "Cierre de Caja", gestionando importes, entradas y salidas de dinero.
 * **Control de Inventario:** Gestión dinámica de productos, categorías y actualización de stock tras ventas o pedidos.
